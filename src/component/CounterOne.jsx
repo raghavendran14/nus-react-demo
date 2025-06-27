@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Counter = ({ count1, updateCount }) => {
-    console.log("I am in Counnter");
 
+    useEffect(() => {
+        console.log(" Mouniting the component");
+
+        return () => {
+            console.log("Unmounting --");
+
+        }
+    }, [])
     return (
         <React.Fragment>
             <button
