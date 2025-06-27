@@ -5,15 +5,12 @@ import './App.css'
 import Counter from './component/CounterOne'
 import CounterPure from './component/CounterTwoPure'
 
-let nonSteCount = 0;
-const Message = React.memo(({ text }) => {
-  console.log('Message rendered');
-  return <p>{text}</p>;
-});
+
 function App() {
   const [count, setCount] = useState(0)
   const [count1, setCount1] = useState(0)
   const [text, setText] = useState('This a test message');
+  const [show, setShow] = useState(true)
   console.log("I am in APP");
 
   return (
@@ -43,11 +40,21 @@ function App() {
         </p>
       </div>
       <div>
-        <Counter count1={count1} updateCount={(count1) => {
-          console.log("count1 ", count1);
+        <button
+          value={show}
+          onClick={() => {
+            setShow((show) => !show)
+          }}
+        >
+          Toggle
+        </button>
+      </div>
+      <div>
+        {show && <Counter count1={count1} updateCount={(count1) => {
+          console.log("count1 ", count);
 
           setCount1(count1)
-        }} />
+        }} />}
       </div>
 
       <p className="read-the-docs">
